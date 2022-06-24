@@ -24,30 +24,44 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
+  final weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.indigo,
       appBar: AppBar(
-        title: const Center(
-          child: Text('Weather Forecast'),
-        ),
+        centerTitle: true,
+        title: const Text('Weather Forecast'),
         backgroundColor: Colors.indigo,
         elevation: 0,
       ),
       body: Column(
         children: [
           const TextField(
+            maxLength: 20,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "Enter City Name",
-              hintStyle: TextStyle(color: Colors.white),
-              icon: Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-            ),
+                border: InputBorder.none,
+                counterText: '',
+                hintText: "Enter City Name",
+                hintStyle: TextStyle(color: Colors.white),
+                icon: Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                )),
           ),
           Column(
             children: const [
@@ -76,7 +90,7 @@ class _MyWidgetState extends State<MyWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Padding(
-                padding: EdgeInsets.only(top: 30, bottom: 35, right: 25),
+                padding: EdgeInsets.only(top: 70, bottom: 70, right: 25),
                 child: Icon(
                   Icons.sunny,
                   color: Colors.white,
@@ -187,19 +201,20 @@ class _MyWidgetState extends State<MyWidget> {
             height: 120,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Container(
+              children: List.generate(
+                7,
+                (index) => Container(
                   width: 160,
                   margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
                   color: Colors.white30,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
                         child: Text(
-                          "Monday",
-                          style: TextStyle(
+                          "${weekDays[index]}",
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.w200,
@@ -227,241 +242,7 @@ class _MyWidgetState extends State<MyWidget> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Tuesday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "5 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Wednesday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "15 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Thursday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "3 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Friday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "0 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Saturday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "9 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.only(top: 5, bottom: 5),
-                  color: Colors.white30,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Sunday",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "10 °F  ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w200,
-                            ),
-                          ),
-                          Icon(
-                            Icons.sunny,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           )
         ],
